@@ -53,6 +53,8 @@ services:
 
     environment:
 
+      SERVER_ADDRESS: 0.0.0.0
+
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-order:5432/${ORDER_DB_NAME}
 
       SPRING_DATASOURCE_USERNAME: ${ORDER_DB_USER}
@@ -83,6 +85,7 @@ services:
       - "8081:8081"
 
     environment:
+      SERVER_ADDRESS: 0.0.0.0
 
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-payment:5432/${PAYMENT_DB_NAME}
 
@@ -111,6 +114,8 @@ services:
     container_name: notification-service
 
     environment:
+
+      SERVER_ADDRESS: 0.0.0.0
 
       AWS_REGION: ${AWS_REGION}
 
