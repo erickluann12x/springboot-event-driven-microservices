@@ -25,18 +25,17 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
+
             set -e
 
-            echo "Pulling latest code..."
             cd ~/springboot-event-driven-microservices
 
             git pull
 
-            echo "Pulling Docker images..."
             docker compose pull
 
-            echo "Restarting containers..."
-            docker compose up -d
+            docker compose up -d --remove-orphans
 
-            echo "Deployment finished!"
-            docker ps
+            docker image prune -f
+
+            docker compose ps
